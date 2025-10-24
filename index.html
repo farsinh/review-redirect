@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leave a Review & Connect</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f7f9fb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      background: #fff;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 320px;
+    }
+    button {
+      background-color: #4285F4;
+      border: none;
+      color: #fff;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #3367D6;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Leave a Review & Get a Surprise!</h2>
+    <p>Tap below to post your Google Review.</p>
+    <button onclick="openBoth()">Leave a Review</button>
+  </div>
+
+  <script>
+    function openBoth() {
+      const googleReview = "https://g.page/r/YOUR-GOOGLE-REVIEW-LINK"; // replace this
+      const instagram = "https://www.instagram.com/YOUR-INSTAGRAM/"; // replace this
+
+      // Open Instagram first (background tab)
+      window.open(instagram, "_blank");
+
+      // Open Google review second (foreground tab)
+      window.open(googleReview, "_blank");
+    }
+  </script>
+</body>
+</html>
