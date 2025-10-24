@@ -1,75 +1,117 @@
-
-     
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Leave a Review & Connect</title>
+  <title>Leave a Review & Connect With Us</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f7f9fb;
+      background-color: #f4f7fb;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      margin: 0;
     }
+
     .card {
       background: #fff;
       padding: 40px;
       border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       text-align: center;
-      max-width: 320px;
+      width: 320px;
     }
+
+    h2 {
+      color: #333;
+    }
+
+    p {
+      color: #555;
+    }
+
     button {
       background-color: #4285F4;
       border: none;
-      color: #fff;
+      color: white;
       padding: 12px 25px;
       border-radius: 8px;
       cursor: pointer;
       font-size: 16px;
+      margin-top: 10px;
     }
+
     button:hover {
       background-color: #3367D6;
+    }
+
+    .social-links {
+      margin-top: 25px;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin: 0 10px;
+      text-decoration: none;
+      color: #555;
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+
+    .social-links a:hover {
+      color: #000;
+    }
+
+    .icon {
+      width: 32px;
+      height: 32px;
+      vertical-align: middle;
+    }
+
+    .label {
+      display: block;
+      font-size: 12px;
+      margin-top: 4px;
+      color: #666;
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <h2>Leave a Review & Get a Surprise!</h2>
-    <p>Tap below to post your Google Review.</p>
-    <button onclick="openTabs()">Leave a Review</button>
-    <p id="note" style="margin-top:15px; color:gray; font-size:13px;"></p>
+    <h2>Leave a Google Review</h2>
+    <p>Your feedback helps us improve and grow ❤️</p>
+
+    <!-- Review Button -->
+    <button onclick="openGoogleReview()">Leave a Review</button>
+
+    <!-- Social Links Section -->
+    <div class="social-links">
+      <p style="margin-bottom: 10px;">Follow us on</p>
+      <a href="https://www.instagram.com/checkin_kochi" target="_blank" title="Instagram">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" class="icon" alt="Instagram">
+        <span class="label">Instagram</span>
+      </a>
+      <a href="https://www.facebook.com/YOUR-FACEBOOK" target="_blank" title="Facebook">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" class="icon" alt="Facebook">
+        <span class="label">Facebook</span>
+      </a>
+    </div>
   </div>
 
   <script>
-    function openTabs() {
-      const googleReview = "https://g.page/r/CdBeKY14ZiBNEBE/review"; // replace this
-      const instagram = "https://www.instagram.com/checkin_kochi/"; // replace this
-
-
-      // Open Instagram in a new tab first
-      const instaTab = window.open(instagram, "_blank");
-
-      // Small delay (works better across browsers)
-      setTimeout(() => {
-        window.open(googleReview, "_blank");
-      }, 250); // quarter second delay
-    }
-
-    // Optional notice for iPhone users
-    const ua = navigator.userAgent.toLowerCase();
-    if (ua.includes("iphone") || ua.includes("ipad")) {
-      document.getElementById("note").innerText = "Note: iPhone users may need to open Instagram manually after review (Safari limits multi-tab).";
+    function openGoogleReview() {
+      const googleReviewLink = "https://g.page/r/CdBeKY14ZiBNEBE/review"; // Replace this
+      window.open(googleReviewLink, "_blank");
     }
   </script>
 </body>
 </html>
 
 
-      
+//      const googleReview = "https://g.page/r/CdBeKY14ZiBNEBE/review"; // replace this
+  //    const instagram = "https://www.instagram.com/checkin_kochi/"; // replace this
+
 
      
