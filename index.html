@@ -3,109 +3,201 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CHECK-IN Multicollection</title>
+  <title>Leave a Review | Farsin</title>
   <style>
+    /* ===== Base Styling ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f7fb;
+      font-family: "Poppins", sans-serif;
+      color: #fff;
+      background: radial-gradient(circle at top right, #0f2027, #203a43, #2c5364);
+      overflow-x: hidden;
+      height: 100vh;
+    }
+
+    /* ===== Hero Section ===== */
+    .hero {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
-    }
-
-    .card {
-      background: #fff;
-      padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       text-align: center;
-      width: 320px;
+      position: relative;
+      overflow: hidden;
     }
 
-    h2 {
-      color: #333;
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      animation: fadeInDown 1.2s ease forwards;
     }
 
     p {
-      color: #555;
+      font-size: 1.1rem;
+      color: #dcdcdc;
+      margin-bottom: 30px;
+      animation: fadeIn 2s ease forwards;
     }
 
     button {
-      background-color: #4285F4;
+      background: linear-gradient(135deg, #4285f4, #2a69d1);
       border: none;
-      color: white;
-      padding: 12px 25px;
-      border-radius: 8px;
+      padding: 14px 35px;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      color: #fff;
       cursor: pointer;
-      font-size: 16px;
-      margin-top: 10px;
+      transition: all 0.3s ease;
+      animation: fadeInUp 1.3s ease forwards;
     }
 
     button:hover {
-      background-color: #3367D6;
+      transform: scale(1.08);
+      box-shadow: 0 10px 25px rgba(66,133,244,0.4);
     }
 
-    .social-links {
-      margin-top: 25px;
+    /* ===== Social Section ===== */
+    .social {
+      margin-top: 60px;
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      animation: fadeIn 2.2s ease forwards;
     }
 
-    .social-links a {
-      display: inline-block;
-      margin: 0 10px;
+    .social a {
       text-decoration: none;
-      color: #555;
-      font-weight: bold;
-      transition: 0.2s ease;
+      color: white;
+      text-align: center;
     }
 
-    .social-links a:hover {
-      color: #000;
+    .profile-pic {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      object-fit: cover;
+      transition: transform 0.4s ease, box-shadow 0.3s ease;
     }
 
-    .icon {
-      width: 32px;
-      height: 32px;
-      vertical-align: middle;
+    .profile-pic:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px rgba(255,255,255,0.3);
     }
 
     .label {
       display: block;
-      font-size: 12px;
-      margin-top: 4px;
-      color: #666;
+      margin-top: 10px;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    /* ===== Floating Background Animation ===== */
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.07);
+      animation: float 10s infinite ease-in-out;
+    }
+
+    .circle:nth-child(1) {
+      width: 300px;
+      height: 300px;
+      top: 10%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .circle:nth-child(2) {
+      width: 200px;
+      height: 200px;
+      bottom: 10%;
+      right: 15%;
+      animation-delay: 2s;
+    }
+
+    .circle:nth-child(3) {
+      width: 150px;
+      height: 150px;
+      top: 20%;
+      right: 25%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-20px) scale(1.05); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      position: absolute;
+      bottom: 15px;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      width: 100%;
+    }
+
+    @media(max-width: 600px) {
+      h1 { font-size: 2rem; }
+      .profile-pic { width: 70px; height: 70px; }
+      .social { gap: 25px; }
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h2>CHECK-IN Multicollection</h2>
-    <p>Your feedback helps us improve & grow ❤️</p>
+  <div class="hero">
+    <!-- Floating circles background -->
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
 
-    <!-- Review Button -->
+    <h1>We’d Love Your Feedback 🌟</h1>
+    <p>Help us grow by leaving a quick Google Review.<br>Follow us on social media below!</p>
+
     <button onclick="openGoogleReview()">Leave a Review</button>
 
-    <!-- Social Links Section -->
-    <div class="social-links">
-      <p style="margin-bottom: 10px;">Follow us on</p>
-      <a href="https://www.instagram.com/checkin_kochi" target="_blank" title="Instagram">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" class="icon" alt="Instagram">
-        <span class="label">Instagram</span>
+    <div class="social">
+      <a href="https://www.instagram.com/YOUR-INSTAGRAM" target="_blank">
+        <img src="profile.jpg" class="profile-pic" alt="Instagram Profile">
+        <span class="label">@yourhandle</span>
       </a>
-      <a href="https://m.facebook.com/144910042035723?wtsid=rdr_0anxXsivJ4Mr1ATy8" target="_blank" title="Facebook">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" class="icon" alt="Facebook">
+
+      <a href="https://facebook.com/YOUR-FACEBOOK" target="_blank">
+        <img src="facebook.jpg" class="profile-pic" alt="Facebook Page">
         <span class="label">Facebook</span>
       </a>
     </div>
-  
+  </div>
+
+  <footer>© 2025 Farsin | Powered by GitHub Pages</footer>
 
   <script>
     function openGoogleReview() {
-      const googleReviewLink = "https://g.page/r/CdBeKY14ZiBNEBE/review"; // Replace this
-      window.open(googleReviewLink, "_blank");
+      window.open("https://g.page/r/YOUR-GOOGLE-REVIEW-LINK", "_blank");
     }
   </script>
 </body>
 </html>
-     
