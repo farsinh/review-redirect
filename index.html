@@ -3,91 +3,214 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CHECK-IN Multicollection</title>
+  <title>Leave a Review | Farsin</title>
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f7fb;
+      font-family: "Poppins", sans-serif;
+      color: #fff;
+      background: radial-gradient(circle at 20% 30%, #0a0a0f, #000);
+      overflow-x: hidden;
+      height: 100vh;
+    }
+
+    /* ===== Animated Background ===== */
+    .gradient-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, #ff6ec4, #7873f5, #4ade80, #facc15, #00c6ff);
+      background-size: 400% 400%;
+      opacity: 0.25;
+      animation: gradientShift 12s ease infinite;
+      z-index: 0;
+      filter: blur(100px);
+    }
+
+    .hero {
+      position: relative;
+      z-index: 2;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
-    }
-
-    .card {
-      background: #fff;
-      padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       text-align: center;
-      width: 320px;
+      padding: 20px;
     }
 
-    h2 {
-      color: #333;
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      animation: fadeInDown 1s ease forwards;
     }
 
     p {
-      color: #555;
+      font-size: 1.1rem;
+      color: #ccc;
+      margin-bottom: 35px;
+      animation: fadeIn 2s ease forwards;
+      max-width: 500px;
     }
 
     button {
-      background-color: #4285F4;
+      background: linear-gradient(135deg, #4285f4, #00c6ff);
       border: none;
-      color: white;
-      padding: 12px 25px;
-      border-radius: 8px;
+      padding: 14px 40px;
+      font-size: 1.1rem;
+      border-radius: 12px;
+      color: #fff;
       cursor: pointer;
-      font-size: 16px;
-      margin-top: 10px;
+      transition: all 0.3s ease;
+      animation: fadeInUp 1.3s ease forwards;
+      box-shadow: 0 8px 25px rgba(66, 133, 244, 0.25);
     }
+    button:hover { transform: scale(1.08); box-shadow: 0 0 40px rgba(0, 198, 255, 0.6); }
 
-    button:hover {
-      background-color: #3367D6;
+    /* ===== Social Section ===== */
+    .social {
+      margin-top: 70px;
+      display: flex;
+      gap: 60px;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 2.2s ease forwards;
     }
-
-    .social-links {
-      margin-top: 25px;
-    }
-
-    .social-links a {
-      display: inline-block;
-      margin: 0 10px;
+    .social a {
       text-decoration: none;
-      color: #555;
-      font-weight: bold;
-      transition: 0.2s ease;
+      color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .social-links a:hover {
-      color: #000;
+    .social-icon {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: #111;
+      object-fit: contain;
+      padding: 10px;
+      transition: transform 0.4s ease, box-shadow 0.3s ease;
     }
-
-    .icon {
-      width: 32px;
-      height: 32px;
-      vertical-align: middle;
+    .fb-fix {
+      padding: 15px;
+      background-color: #1877f2;
+    }
+    .social-icon:hover {
+      transform: scale(1.12);
+      box-shadow: 0 0 35px rgba(255, 255, 255, 0.3);
     }
 
     .label {
-      display: block;
-      font-size: 12px;
-      margin-top: 4px;
-      color: #666;
+      margin-top: 10px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* ===== Trust Section ===== */
+    .trust {
+      margin-top: 60px;
+      text-align: center;
+      color: #aaa;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      animation: fadeIn 3s ease forwards;
+    }
+
+    /* ===== Floating WhatsApp Button ===== */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #25d366;
+      color: #fff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 25px rgba(37, 211, 102, 0.6);
+      z-index: 10;
+      transition: transform 0.3s ease;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); }
+    .whatsapp-float img {
+      width: 34px;
+      height: 34px;
+    }
+
+    /* ===== Exit Reminder Popup ===== */
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      background: rgba(15, 15, 15, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 25px 30px;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 0 40px rgba(0, 198, 255, 0.2);
+      opacity: 0;
+      transition: all 0.4s ease;
+      z-index: 999;
+      width: 90%;
+      max-width: 350px;
+    }
+    .popup.active {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .popup button {
+      background: linear-gradient(135deg, #00c6ff, #4285f4);
+      margin-top: 15px;
+      font-size: 1rem;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 15px;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5);
+      text-align: center;
+      width: 100%;
+      animation: fadeIn 3s ease forwards;
+      z-index: 2;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    @media(max-width: 600px) {
+      h1 { font-size: 2rem; }
+      .profile-pic { width: 70px; height: 70px; }
+      .social { gap: 30px; }
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h2>CHECK-IN Multicollection</h2>
-    <p>Your feedback helps us improve & grow ❤️</p>
+  <div class="gradient-bg"></div>
 
-    <!-- Review Button -->
+  <div class="hero">
+    <h1>We’d Love Your Feedback 🌟</h1>
+    <p>Help us grow by leaving a quick Google Review.<br>Follow us on social media below!</p>
+
     <button onclick="openGoogleReview()">Leave a Review</button>
 
-    <!-- Social Links Section -->
-    <div class="social-links">
+ <div class="social-links">
       <p style="margin-bottom: 10px;">Follow us on</p>
       <a href="https://www.instagram.com/checkin_kochi" target="_blank" title="Instagram">
         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" class="icon" alt="Instagram">
@@ -98,14 +221,44 @@
         <span class="label">Facebook</span>
       </a>
     </div>
-  
+
+    <div class="trust">
+      ⭐ Rated <strong>4.9/5</strong> by over <strong>1,000+</strong> happy customers<br>
+      🏆 Trusted by our local community<br>
+      📍 Visit us at <a href="https://goo.gl/maps/YOUR-MAP" target="_blank" style="color:#00c6ff;text-decoration:none;">View on Google Maps</a>
+    </div>
+  </div>
+
+  <a href="https://wa.me/91XXXXXXXXXX?text=Hi!%20I%20just%20left%20a%20review!" class="whatsapp-float" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+
+  <div class="popup" id="exitPopup">
+    <p>👋 Hey! Before you go...<br>Please take 10 seconds to leave a review — it really helps us ❤️</p>
+    <button onclick="openGoogleReview(); closePopup();">Leave Review</button>
+    <button onclick="closePopup();" style="margin-left:10px;background:#444;">Maybe Later</button>
+  </div>
+
+  <footer>© 2025 Farsin | Powered by GitHub Pages</footer>
 
   <script>
     function openGoogleReview() {
-      const googleReviewLink = "https://g.page/r/CdBeKY14ZiBNEBE/review"; // Replace this
-      window.open(googleReviewLink, "_blank");
+      window.open("https://g.page/r/CdBeKY14ZiBNEBE/review", "_blank");
+    }
+
+    // Exit Reminder Popup Logic
+    let popupShown = false;
+    window.addEventListener('mouseleave', () => {
+      if (!popupShown) {
+        document.getElementById('exitPopup').classList.add('active');
+        popupShown = true;
+      }
+    });
+
+    function closePopup() {
+      document.getElementById('exitPopup').classList.remove('active');
     }
   </script>
 </body>
 </html>
-     
+
