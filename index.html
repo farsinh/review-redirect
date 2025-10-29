@@ -15,38 +15,50 @@
     body {
       font-family: "Poppins", sans-serif;
       color: #fff;
-      background: linear-gradient(-45deg, #ff6ec4, #7873f5, #4ade80, #facc15);
-      background-size: 400% 400%;
-      animation: gradientShift 10s ease infinite;
+      background: radial-gradient(circle at 20% 30%, #0a0a0f, #000);
       overflow-x: hidden;
       height: 100vh;
     }
 
+    /* ===== Animated Gradient Overlay ===== */
+    .gradient-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, #ff6ec4, #7873f5, #4ade80, #facc15, #00c6ff);
+      background-size: 400% 400%;
+      opacity: 0.25;
+      animation: gradientShift 12s ease infinite;
+      z-index: 0;
+      filter: blur(100px);
+    }
+
     /* ===== Hero Section ===== */
     .hero {
+      position: relative;
+      z-index: 2;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
       text-align: center;
-      position: relative;
       overflow: hidden;
+      padding: 20px;
     }
 
     h1 {
       font-size: 2.8rem;
       margin-bottom: 15px;
       animation: fadeInDown 1s ease forwards;
-      text-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
     }
 
     p {
       font-size: 1.1rem;
-      color: #f4f4f4;
-      margin-bottom: 30px;
+      color: #ccc;
+      margin-bottom: 35px;
       animation: fadeIn 2s ease forwards;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
     }
 
     button {
@@ -59,19 +71,19 @@
       cursor: pointer;
       transition: all 0.3s ease;
       animation: fadeInUp 1.3s ease forwards;
-      box-shadow: 0 4px 25px rgba(66, 133, 244, 0.3);
+      box-shadow: 0 8px 25px rgba(66, 133, 244, 0.25);
     }
 
     button:hover {
       transform: scale(1.08);
-      box-shadow: 0 0 35px rgba(0, 198, 255, 0.6);
+      box-shadow: 0 0 40px rgba(0, 198, 255, 0.6);
     }
 
     /* ===== Social Section ===== */
     .social {
-      margin-top: 60px;
+      margin-top: 70px;
       display: flex;
-      gap: 50px;
+      gap: 60px;
       justify-content: center;
       animation: fadeIn 2.2s ease forwards;
     }
@@ -86,33 +98,34 @@
       width: 90px;
       height: 90px;
       border-radius: 50%;
-      border: 3px solid rgba(255, 255, 255, 0.8);
+      border: 2px solid rgba(255, 255, 255, 0.5);
       object-fit: cover;
       transition: transform 0.4s ease, box-shadow 0.3s ease;
     }
 
     .profile-pic:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+      transform: scale(1.12);
+      box-shadow: 0 0 35px rgba(255, 255, 255, 0.4);
     }
 
     .label {
       display: block;
       margin-top: 10px;
       font-size: 0.9rem;
-      opacity: 0.9;
+      opacity: 0.8;
     }
 
-    /* ===== Floating Lights ===== */
-    .light {
+    /* ===== Floating Orbs ===== */
+    .orb {
       position: absolute;
       border-radius: 50%;
-      filter: blur(70px);
-      opacity: 0.6;
-      animation: float 12s ease-in-out infinite alternate;
+      filter: blur(80px);
+      opacity: 0.3;
+      animation: float 14s ease-in-out infinite alternate;
+      z-index: 1;
     }
 
-    .light:nth-child(1) {
+    .orb:nth-child(1) {
       width: 300px;
       height: 300px;
       background: #ff6ec4;
@@ -120,7 +133,7 @@
       left: 10%;
     }
 
-    .light:nth-child(2) {
+    .orb:nth-child(2) {
       width: 250px;
       height: 250px;
       background: #00c6ff;
@@ -129,9 +142,9 @@
       animation-delay: 3s;
     }
 
-    .light:nth-child(3) {
-      width: 180px;
-      height: 180px;
+    .orb:nth-child(3) {
+      width: 200px;
+      height: 200px;
       background: #4ade80;
       top: 20%;
       right: 25%;
@@ -146,7 +159,7 @@
 
     @keyframes float {
       0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-40px) scale(1.05); }
+      50% { transform: translateY(-30px) scale(1.05); }
     }
 
     @keyframes fadeInDown {
@@ -168,26 +181,27 @@
       position: absolute;
       bottom: 15px;
       font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255, 255, 255, 0.5);
       text-align: center;
       width: 100%;
       animation: fadeIn 3s ease forwards;
+      z-index: 2;
     }
 
     @media(max-width: 600px) {
       h1 { font-size: 2rem; }
       .profile-pic { width: 70px; height: 70px; }
-      .social { gap: 25px; }
+      .social { gap: 30px; }
     }
   </style>
 </head>
 <body>
-  <div class="hero">
-    <!-- Floating colorful lights -->
-    <div class="light"></div>
-    <div class="light"></div>
-    <div class="light"></div>
+  <div class="gradient-bg"></div>
+  <div class="orb"></div>
+  <div class="orb"></div>
+  <div class="orb"></div>
 
+  <div class="hero">
     <h1>We’d Love Your Feedback 🌟</h1>
     <p>Help us grow by leaving a quick Google Review.<br>Follow us on social media below!</p>
 
@@ -206,7 +220,7 @@
     </div>
   </div>
 
-  //<footer>© 2025 Farsin | Powered by GitHub Pages</footer>
+  <footer>© 2025 Farsin | Powered by GitHub Pages</footer>
 
   <script>
     function openGoogleReview() {
