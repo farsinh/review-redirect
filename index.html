@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Review & Connect</title>
+<title>Check-in Multicollection</title>
 <style>
   body {
     margin: 0;
@@ -12,6 +12,11 @@
     color: white;
     text-align: center;
     overflow-x: hidden;
+
+    padding-top: env(safe-area-inset-top);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
   } 
   h1 {
     font-size: 2.4rem;
@@ -160,7 +165,7 @@
   </div>
 
   <button class="save-contact" onclick="saveVCard()">📇 Save Our Contact</button>
-  <h2 class="checkin">📍 CHECK-IN KOCHI</h2>
+  <h2 class="checkin">CHECK-IN KOCHI</h2>
 
 
   <script>
@@ -172,9 +177,9 @@
       const vCardData = 
 `BEGIN:VCARD
 VERSION:3.0
-FN:Your Shop Name
-TEL;TYPE=cell:+919876543210
-EMAIL:yourshop@email.com
+FN:CHECK-IN Kaloor
+TEL;TYPE=cell:+919446010503
+EMAIL:checkinmulticollections@email.com
 ADR;TYPE=work:;;Your Shop Address;City;State;PIN;India
 URL:https://yourwebsite.com
 END:VCARD`;
